@@ -7,7 +7,7 @@ class Mutations::FindCommunity < Mutations::BaseMutation
   field :errors, [String], null: false
 
   def resolve(zip)
-    communities = LocationFacade.new(zip)
+    communities = CommunitySerializer.new(LocationFacade.new(zip))
   end
   
 
