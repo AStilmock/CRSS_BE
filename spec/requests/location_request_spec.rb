@@ -5,11 +5,7 @@ RSpec.describe 'Location Request API' do
     it 'get successful response' do
       query = <<-GQL
         mutation {
-          findCommunity(
-            input: {
-              zipCode: "80226"
-            }
-          )
+          findCommunity(zipCode: "12345" )
           {
             message
           }
