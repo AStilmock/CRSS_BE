@@ -6,14 +6,22 @@ module Mutations
     field :formatted_address, String, null: true
     field :errors, [String], null: false
 
+    # require 'pry'; binding.pry
     def resolve(input:)
-      location_facade = LocationFacade.new(input)
-      result = location_facade.find_community
-
-      {
-        formatted_address: result[:formatted_address],
-        errors: result[:errors]
-      }
+      begin
+        location_facade = LocationFacade.new(input)
+        communities = location_facade.process_location_search
+        # what is process_location_search returning?
+        {
+          formatted_address: communities.map(&:formatted_address).join(', '),
+          errors: ["You have reached the end of the internet."] 
+        }
+      rescue=> e
+        {
+          formatted_address: nil,
+          errors: [e.message]
+        }
+      end
     end
   end
 end
