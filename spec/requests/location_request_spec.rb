@@ -12,9 +12,10 @@ RSpec.describe 'Location Request API' do
           }
         }
       GQL
+      # query = "12345"
       result = CommunityRssSchema.execute(query)
       result_hash = result.to_h
-      # require 'pry'; binding.pry
+      require 'pry'; binding.pry
       expect(result.to_h).to be_a Hash
     end
 
