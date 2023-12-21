@@ -40,8 +40,4 @@ class CommunityRssSchema < GraphQL::Schema
     # For example, use Rails' GlobalID library (https://github.com/rails/globalid):
     GlobalID.find(global_id)
   end
-  
-  # def self.find_community(zip_code)
-
-  # end
 end

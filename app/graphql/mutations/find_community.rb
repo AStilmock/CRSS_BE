@@ -1,32 +1,19 @@
 module Mutations
   class FindCommunity < BaseMutation
     null true
-    argument :zipCode, String, required: true
+    argument :input, Types::FindCommunityInput, required: true
 
-    # field :findCommunity, Types::FindCommunityType
-    field :messages, String, null: false
+    field :formatted_address, String, null: true
     field :errors, [String], null: false
 
-    def resolve(zipCode:)
-      require 'pry'; binding.pry
-      communities = LocationFacade.new(zipCode)
-    end
-    
+    def resolve(input:)
+      location_facade = LocationFacade.new(input)
+      result = location_facade.find_community
 
-    # def resolve(zip)
-      # post = Post.find(post_id)
-      # comment = post.comments.build(body: body, author: context[:current_user])
-      # if comment.save
-      #   {
-      #     comment: comment,
-      #     errors: [],
-      #   }
-      # else
-      #   {
-      #     comment: nil,
-      #     errors: comment.errors.full_messages
-      #   }
-      # end
-    # end
+      {
+        formatted_address: result[:formatted_address],
+        errors: result[:errors]
+      }
+    end
   end
 end
