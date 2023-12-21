@@ -7,7 +7,7 @@ RSpec.describe 'Location Request API' do
         mutation {
           findCommunity(zipCode: "12345" )
           {
-            message
+            message 
           }
         }
       GQL
@@ -27,7 +27,6 @@ RSpec.describe 'Location Request API' do
       GQL
 
       result = CommunityRssSchema.execute(query)
-      # expect
     end
 
     xit "returns error when query fails" do
