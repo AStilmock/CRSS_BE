@@ -5,12 +5,12 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    field :communities, 
-    [Types::CommunityType],
+    field :find_community, 
+    [Types::FindCommunityType],
     null: false, 
     description: "Return a list of communities"
 
-    def communities
+    def find_community
       Community.all
     end 
     

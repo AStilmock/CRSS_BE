@@ -41,7 +41,7 @@ class CommunityRssSchema < GraphQL::Schema
     GlobalID.find(global_id)
   end
   
-  # def self.zip_code
+  # def self.find_community(zip_code)
 
   # end
 end
