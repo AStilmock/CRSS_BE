@@ -1,7 +1,7 @@
 module Mutations
   class FindCommunity < BaseMutation
     null true
-    argument :input, Types::FindCommunityInput, required: true
+    argument :zipCode, GraphQL::Types::JSON, required: true
 
     field :formatted_address, String, null: true
     field :errors, [String], null: false
