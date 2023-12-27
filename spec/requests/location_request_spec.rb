@@ -3,21 +3,22 @@ require 'rails_helper'
 RSpec.describe 'Location Request API' do
   describe 'mutation request' do
     it 'get successful response' do
-      query = <<-GQL
+      input = <<-GQL
         mutation($input: FindCommunityInput!) {
-          findCommunity(input: { zipCode: 12345 }) {
+          findCommunity(input: $input) {
             results {
               formatted_address
             }
           }
         }
       GQL
-      # query = "12345"
-      result = CommunityRssSchema.execute(query)
+    
+      result = CommunityRssSchema.execute(input, variables: { input: { zipCode: 12345 } })
       result_hash = result.to_h
       require 'pry'; binding.pry
       expect(result.to_h).to be_a Hash
     end
+    
 
     xit 'returns data for zip code in query' do
       query = <<-GQL
