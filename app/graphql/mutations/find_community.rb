@@ -6,8 +6,8 @@ module Mutations
     field :formatted_address, String, null: true
     field :errors, [String], null: false
 
-    # require 'pry'; binding.pry
     def resolve(input:)
+      require 'pry'; binding.pry
       begin
         location_facade = LocationFacade.new(input)
         communities = location_facade.process_location_search
