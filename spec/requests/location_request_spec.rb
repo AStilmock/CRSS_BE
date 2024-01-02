@@ -4,18 +4,26 @@ RSpec.describe 'Location Request API' do
   describe 'mutation request' do
     it 'get successful response' do
       query = <<-GQL
-        mutation {
-          findCommunity(zipCode: "12345" )
-          {
-            message 
+        mutation($input: FindCommunityInput!) {
+          findCommunity(input: { zipCode: "80226" }) {
+            formatted_address
+            errors
           }
         }
       GQL
-      result = CommunityRssSchema.execute(query)
-      result_hash = result.to_h
+    
+      # variables = {
+      #   "input": {
+      #     "zipCode": "80226"
+      #   }
+      # }
+    
+      post "/graphql", params: { query: query }
+      result = JSON.parse(response.body)
       require 'pry'; binding.pry
-      expect(result.to_h).to be_a Hash
+      expect(result).to be_a Hash
     end
+    
 
     xit 'returns data for zip code in query' do
       query = <<-GQL

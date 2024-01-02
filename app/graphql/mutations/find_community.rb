@@ -1,32 +1,27 @@
 module Mutations
   class FindCommunity < BaseMutation
     null true
-    argument :zipCode, String, required: true
+    argument :zipCode, GraphQL::Types::JSON, required: true
 
-    # field :findCommunity, Types::FindCommunityType
-    field :messages, String, null: false
+    field :formatted_address, String, null: true
     field :errors, [String], null: false
 
-    def resolve(zipCode:)
+    def resolve(input:)
       require 'pry'; binding.pry
-      communities = LocationFacade.new(zipCode)
+      begin
+        location_facade = LocationFacade.new(input)
+        communities = location_facade.process_location_search
+        # what is process_location_search returning?
+        {
+          formatted_address: communities.map(&:formatted_address).join(', '),
+          errors: ["You have reached the end of the internet."] 
+        }
+      rescue=> e
+        {
+          formatted_address: nil,
+          errors: [e.message]
+        }
+      end
     end
-    
-
-    # def resolve(zip)
-      # post = Post.find(post_id)
-      # comment = post.comments.build(body: body, author: context[:current_user])
-      # if comment.save
-      #   {
-      #     comment: comment,
-      #     errors: [],
-      #   }
-      # else
-      #   {
-      #     comment: nil,
-      #     errors: comment.errors.full_messages
-      #   }
-      # end
-    # end
   end
 end
