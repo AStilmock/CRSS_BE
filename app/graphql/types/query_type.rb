@@ -5,14 +5,14 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    field :find_community, 
-    [Types::FindCommunityType],
+    field :community, 
+    [Types::CommunityType],
     null: false, 
     description: "Return a list of communities"
 
-    def find_community
-      Community.all
-    end 
+    # def find_community
+    #   Community.all
+    # end 
     
     field :node, Types::NodeType, null: true, description: "Fetches an object given its ID." do
       argument :id, ID, required: true, description: "ID of the object."
