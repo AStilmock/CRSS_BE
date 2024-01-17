@@ -1,6 +1,6 @@
 class LocationService
   def conn
-    Faraday.new(url: "http://maps.googleapis.com") do |f|
+    Faraday.new(url: "https://maps.googleapis.com") do |f|
       f.params["key"] = ENV["googskey"]
     end
   end
