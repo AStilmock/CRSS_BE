@@ -1,12 +1,12 @@
 module Mutations
   class FindCommunity < GrapQL::Schema::Mutation
-    null false
     argument :zip_code, String, required: true
 
+    field
+
     def resolve(zip_code:)
-      data = LocationFacade.new(zip_code: zip_code)
-      community = data.process_location_search
-      require 'pry'; binding.pry
+      data = LocationFacade.new(zip_code: zip_code).process_location_search
+      render json: ZipCodeSerializer.new(data)
     end
   end
 end
