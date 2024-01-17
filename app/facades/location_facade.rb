@@ -17,7 +17,7 @@ class LocationFacade
       county: county,
       state: state
     }
-    community = CommunityPoro.new(community_data)
+    community = Community.new(community_data)
     community
   end
 end
