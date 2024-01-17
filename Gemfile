@@ -40,7 +40,7 @@ gem 'jsonapi-serializer'
 gem 'faraday'
 gem 'webmock'
 gem 'vcr'
-# gem 'honeybadger' use this for error reporting?
+# gem 'sass-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -54,12 +54,11 @@ group :development, :test do
   gem "orderly"
   gem 'aws-sdk-rails'
   gem 'graphql'
-  
+  gem 'graphiql-rails'
 end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem 'graphiql-rails'
 end
 
