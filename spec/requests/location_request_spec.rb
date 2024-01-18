@@ -5,7 +5,7 @@ RSpec.describe 'Location Request API' do
     it 'gets successfull response' do
       zip_code = "80226"
       mutation = <<~GQL
-        mutation{findCommunity(zipCode: "#{zip_code}") {
+        mutation{community(zipCode: "#{zip_code}") {
           name
           county
           state
@@ -22,7 +22,7 @@ RSpec.describe 'Location Request API' do
     it 'gets data back in successful response' do
       zip_code = "80226"
       mutation = <<~GQL
-        mutation{findCommunity(zipCode: "#{zip_code}") {
+        mutation{community(zipCode: "#{zip_code}") {
           name
           county
           state
@@ -33,7 +33,7 @@ RSpec.describe 'Location Request API' do
     
       post '/graphql', params: { query: mutation }
       object = JSON.parse(response.body, symbolize_names: true)
-      community = object[:data][:findCommunity]
+      community = object[:data][:community]
       expect(community).to be_a Hash
       expect(community).to have_key(:name)
       expect(community).to have_key(:county)
@@ -44,7 +44,7 @@ RSpec.describe 'Location Request API' do
     it 'gets values from the keys in the response' do
       zip_code = "80226"
       mutation = <<~GQL
-        mutation{findCommunity(zipCode: "#{zip_code}") {
+        mutation{community(zipCode: "#{zip_code}") {
           name
           county
           state
@@ -55,7 +55,7 @@ RSpec.describe 'Location Request API' do
     
       post '/graphql', params: { query: mutation }
       object = JSON.parse(response.body, symbolize_names: true)
-      community = object[:data][:findCommunity]
+      community = object[:data][:community]
       expect(community[:name]).to eq "Lakewood"
       expect(community[:county]).to eq "Jefferson County"
       expect(community[:state]).to eq "CO"
