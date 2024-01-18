@@ -1,5 +1,5 @@
 module Mutations
-  class FindCommunity < GrapQL::Schema::Mutation
+  class Community < GrapQL::Schema::Mutation
     argument :zip_code, String, required: true
 
     field
