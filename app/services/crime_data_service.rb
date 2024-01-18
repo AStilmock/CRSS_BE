@@ -11,6 +11,6 @@ class CrimeDataService
   end
   
   def crime_data_search(state)
-    get_url("arrest/state/CO/all?from=1980&to=2024")
+    get_url("arrest/state/#{state}/all?from=1980&to=2024")
   end
 end
