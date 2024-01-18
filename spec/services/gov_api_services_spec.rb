@@ -17,7 +17,7 @@ RSpec.describe "Government Data API Service" do
     it 'gets successful response' do
       zip_code = "80226"
       data = CollegeCardService.new.school_data_search(zip_code)
-
+      # require 'pry'; binding.pry
       expect(data).to be_a Hash
       expect(data).to have_key :metadata
       expect(data).to have_key :results
