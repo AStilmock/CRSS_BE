@@ -1,10 +1,10 @@
 module Types
   class MutationType < Types::BaseObject
-    field :find_community, Types::CommunityType, null: false do
+    field :community, Types::CommunityType, null: false do
       argument :zip_code, String, required: true
     end
 
-    def find_community(zip_code:)
+    def community(zip_code:)
       community = LocationFacade.new(zip_code).process_location_search
     end
   end
