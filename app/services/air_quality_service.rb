@@ -11,11 +11,7 @@ class AirQualityService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  # def state_code_search
-  #   get_url("")
-  # end
-
-  def air_quality_data(state_code, county_code)
-    get_url("annualData/byCounty?param=88101,88502&bdate=19800101&edate=20231231&state=#{state_code}&county=#{county_code}")
+  def test_endpoint
+    get_url("metaData/revisionHistory")
   end
 end

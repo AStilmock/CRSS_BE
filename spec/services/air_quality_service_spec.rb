@@ -5,8 +5,8 @@ RSpec.describe 'Air Quality API Service' do
     it 'gets a successful response' do
       state_code = "08"
       county_code = "059"
-      AirQualityService.new.air_quality_data(state_code, county_code)
-      data = JSON.parse(response.body, symbolize_names: true)
+      data = AirQualityService.new.test_endpoint
+      parsed_data = JSON.parse(response.body, symbolize_names: true)
       require 'pry'; binding.pry
     end
   end
