@@ -29,7 +29,7 @@ RSpec.describe "Government Data API Service" do
 
   describe "Census API for Community Resilience" do
     it 'gets successful response' do
-      data = CommunityResilienceService.new.resilience_data_search
+      data = CensusDataService.new.resilience_data_search
       resilience_hash = data[:dataset].first
 
       expect(resilience_hash).to be_a Hash
