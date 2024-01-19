@@ -1,7 +1,7 @@
 class CrimeDataService
   def conn
     Faraday.new(url: "https://api.usa.gov/crime/fbi/cde/") do |f|
-      f.params["API_KEY"] = ENV["crimeskey"]
+      f.params["API_KEY"] = ENV["crimeski"]
     end
   end
 

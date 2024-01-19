@@ -1,7 +1,7 @@
 class CollegeCardService
   def conn
     Faraday.new(url: "https://api.data.gov/ed/collegescorecard/v1/") do |f|
-      f.params["api_key"] = ENV["collegeskeycard"]
+      f.params["api_key"] = ENV["collegeskicard"]
     end
   end
 

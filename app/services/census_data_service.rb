@@ -1,7 +1,7 @@
-class CommunityResilienceService
+class CensusDataService
   def conn
     Faraday.new(url: "https://api.census.gov/data/") do |f|
-      f.headers["key"] = ENV["censuskey"]
+      f.headers["key"] = ENV["censuski"]
     end
   end
 
